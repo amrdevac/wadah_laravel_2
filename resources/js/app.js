@@ -1,0 +1,47 @@
+require("./bootstrap");
+require("admin-lte");
+
+window.Vue = require("vue").default;
+import Vue from "vue";
+import VueRouter from "vue-router";
+
+import router from "./router/index";
+import store from "./store/index";
+import App from "./app.vue";
+
+Vue.use(VueRouter);
+
+// Dependencies
+// Vform Component
+import { Form } from "vform";
+window.Form = Form;
+// ===============
+
+// Progress Componen
+import VueProgressBar from "vue-progressbar";
+import options from "./config/progressbar";
+Vue.use(VueProgressBar, options);
+// =====
+
+// Progress Componen
+import imageCompressor from "vue-image-compressor";
+Vue.use(imageCompressor);
+// =====
+
+// Kostum
+window.nv = new Vue();
+
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
+// Vue.component(
+//     "example-component",
+//     require("./components/ExampleComponent.vue").default
+// );
+
+const app = new Vue({
+    el: "#app",
+    router,
+    store,
+    components: { App }
+});
