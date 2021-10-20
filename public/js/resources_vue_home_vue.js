@@ -11,8 +11,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_image_compressor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-image-compressor */ "./node_modules/vue-image-compressor/src/js/components/vue-image-compressor.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -32,19 +31,60 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    imageCompressor: vue_image_compressor__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
   data: function data() {
     return {
       in_data: {}
     };
   },
   name: "home",
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)({
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)({
     count: function count(state) {
       return state.count;
     }
@@ -53,21 +93,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.load();
   },
   methods: {
+    konfirmasi_hapus: function konfirmasi_hapus() {
+      var _this = this;
+
+      konfirmasiHapus.fire().then(function (result) {
+        if (result.isConfirmed) {
+          _this.progress_finish();
+
+          _this.$toast.df102();
+        }
+      });
+    },
+    progress_finish: function progress_finish() {
+      this.$Progress.start();
+      this.$Progress.finish();
+    },
+    progress_fail: function progress_fail() {
+      this.$Progress.start();
+      this.$Progress.fail();
+    },
     cek: function cek(e) {
       console.log(e);
     },
     load: function load() {
-      var _this = this;
+      var _this2 = this;
 
       this.$Progress.start();
       axios.get("https://shop.hamzahbatik.co.id/api/homepage?aktif=1").then(function (respon) {
-        _this.in_data = respon.data.in_section;
+        _this2.in_data = respon.data.in_section;
 
-        _this.$Progress.finish();
+        _this2.$Progress.finish();
       })["catch"](function (e) {
-        _this.$Progress.fail();
+        _this2.$Progress.fail();
 
-        _this.$error["catch"](e);
+        _this2.$error["catch"](e);
       });
     }
   }
@@ -159,42 +218,166 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "text-center" },
-    [
-      _vm._l(_vm.in_data, function(data, i) {
-        return _c(
-          "div",
-          { key: i },
-          _vm._l(data.get_item_section, function(test, o) {
-            return _c("div", { key: o })
-          }),
-          0
-        )
-      }),
-      _vm._v(" "),
-      _c("h3", { staticClass: "font-weight-bolder" }, [
-        _vm._v("New Amrullah Apps Dev Boiler,")
+  return _c("div", { staticClass: "text-center" }, [
+    _c("h3", { staticClass: "font-weight-bolder" }, [
+      _vm._v("New Amrullah Apps Dev Boiler")
+    ]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm" }, [
+        _c("div", { staticClass: "m-1" }, [
+          _c("label", { attrs: { for: "" } }, [_vm._v("Progress Bar")]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "m-1 btn btn-primary",
+              on: {
+                click: function($event) {
+                  return _vm.$Progress.start()
+                }
+              }
+            },
+            [_vm._v("Prgress Start")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "m-1 btn btn-success",
+              on: { click: _vm.progress_finish }
+            },
+            [_vm._v("Prgress Finish")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "m-1 btn btn-danger",
+              on: { click: _vm.progress_fail }
+            },
+            [_vm._v("Prgress Fail")]
+          )
+        ])
       ]),
       _vm._v(" "),
-      _c("h1", [_vm._v(_vm._s(_vm.count))]),
+      _c("div", { staticClass: "col-sm" }, [
+        _c("div", { staticClass: "m-1" }, [
+          _c("label", { attrs: { for: "" } }, [_vm._v("Toast Group")]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "m-1 btn btn-primary",
+              on: {
+                click: function($event) {
+                  return _vm.$toast.df102()
+                }
+              }
+            },
+            [_vm._v("Loading")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "m-1 btn btn-success",
+              on: {
+                click: function($event) {
+                  return _vm.$toast.df200()
+                }
+              }
+            },
+            [_vm._v("Success")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "m-1 btn btn-warning",
+              on: {
+                click: function($event) {
+                  return _vm.$toast.df500()
+                }
+              }
+            },
+            [_vm._v("Test HTTP 500")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "m-1 btn btn-danger",
+              on: {
+                click: function($event) {
+                  return _vm.$error.catch()
+                }
+              }
+            },
+            [_vm._v("Catch Error")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "m-1 btn btn-dark",
+              on: { click: _vm.konfirmasi_hapus }
+            },
+            [_vm._v("Delete Confirmation")]
+          )
+        ])
+      ]),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          on: {
-            click: function($event) {
-              return _vm.$store.commit("INCREMENT")
-            }
-          }
-        },
-        [_vm._v("INCREMENT")]
-      )
-    ],
-    2
-  )
+      _c("div", { staticClass: "col-sm" }, [
+        _c("div", { staticClass: "m-1" }, [
+          _c("label", { attrs: { for: "" } }, [
+            _vm._v("Test Vuext Setter Getter")
+          ]),
+          _vm._v(" "),
+          _c("h1", [_vm._v(_vm._s(_vm.count))]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "m-1 btn btn-primary",
+              on: {
+                click: function($event) {
+                  return _vm.$store.commit("INCREMENT")
+                }
+              }
+            },
+            [_vm._v("INCREMENT")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm" }, [
+        _c("div", { staticClass: "m-1" }, [
+          _c("label", { attrs: { for: "" } }, [_vm._v("Default Component")]),
+          _vm._v(" "),
+          _c("div", [_c("kembali")], 1),
+          _vm._v(" "),
+          _c("div", [_c("loading")], 1),
+          _vm._v(" "),
+          _c("div", [_c("kosong")], 1)
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm" }, [
+        _c("div", { staticClass: "m-1" }, [
+          _c("label", { attrs: { for: "" } }, [_vm._v("V-Money Input")]),
+          _vm._v(" "),
+          _c("div", [_c("money", { staticClass: "form-control" })], 1)
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

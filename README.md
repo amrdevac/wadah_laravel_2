@@ -6,6 +6,12 @@
 -   Vue Progress Bar
 -   VForm
 -   Admin LTE 3
+-   sweetalert2
+-   Toast Default
+-   Catch Default
+-   Delete Confirmation Default
+-   v-money
+-   laravel-vue-pagination
 
 #### New
 
@@ -17,22 +23,16 @@
 
 ##### Implementasi Global Function
 
--   Toast Default
--   Catch Default
--   Delete Confirmation Default
 -   Mask Input
 
 ##### Package Default
 
--   sweetalert2
--   v-money
--   laravel-vue-pagination
 -   vue-carousel
 -   vue-multiselect
 
 ##### Default System
-- Auth function
-- Role Function
-- Basic Sidebar Function
-- Basic env.example sistem 
 
+-   Auth function
+-   Role Function
+-   Basic Sidebar Function
+-   Basic env.example sistem

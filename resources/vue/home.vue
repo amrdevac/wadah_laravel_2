@@ -1,22 +1,65 @@
 <template>
    <div class="text-center">
-      <div v-for=" (data,i) in in_data " :key="i">
-         <div v-for="(test,o) in data.get_item_section" :key="o">
-            <!-- <img :src="'https://shop.hamzahbatik.co.id/'" alt /> -->
+      <h3 class="font-weight-bolder">New Amrullah Apps Dev Boiler</h3>
+      <hr />
+      <div class="row">
+         <div class="col-sm">
+            <div class="m-1">
+               <label for>Progress Bar</label>
+               <br />
+               <button @click="$Progress.start()" class="m-1 btn btn-primary">Prgress Start</button>
+               <button @click="progress_finish" class="m-1 btn btn-success">Prgress Finish</button>
+               <button @click="progress_fail" class="m-1 btn btn-danger">Prgress Fail</button>
+            </div>
+         </div>
+         <div class="col-sm">
+            <div class="m-1">
+               <label for>Toast Group</label>
+               <br />
+               <button @click="$toast.df102()" class="m-1 btn btn-primary">Loading</button>
+               <button @click="$toast.df200()" class="m-1 btn btn-success">Success</button>
+               <button @click="$toast.df500()" class="m-1 btn btn-warning">Test HTTP 500</button>
+               <button @click="$error.catch()" class="m-1 btn btn-danger">Catch Error</button>
+               <button @click="konfirmasi_hapus" class="m-1 btn btn-dark">Delete Confirmation</button>
+            </div>
+         </div>
+         <div class="col-sm">
+            <div class="m-1">
+               <label for>Test Vuext Setter Getter</label>
+               <h1>{{ count }}</h1>
+               <button class="m-1 btn btn-primary" @click="$store.commit('INCREMENT')">INCREMENT</button>
+            </div>
+         </div>
+         <div class="col-sm">
+            <div class="m-1">
+               <label for>Default Component</label>
+               <div>
+                  <kembali></kembali>
+               </div>
+               <div>
+                  <loading></loading>
+               </div>
+               <div>
+                  <kosong></kosong>
+               </div>
+            </div>
+         </div>
+         <div class="col-sm">
+            <div class="m-1">
+               <label for>V-Money Input</label>
+               <div>
+                  <money class="form-control"></money>
+               </div>
+            </div>
          </div>
       </div>
-      <h3 class="font-weight-bolder">New Amrullah Apps Dev Boiler,</h3>
-      <h1>{{ count }}</h1>
-      <button class="btn btn-primary" @click="$store.commit('INCREMENT')">INCREMENT</button>
    </div>
 </template>
 
 <script>
-import imageCompressor from "vue-image-compressor";
 import { mapState } from "vuex";
 
 export default {
-   components: { imageCompressor },
    data() {
       return {
          in_data: {}
@@ -32,6 +75,22 @@ export default {
       this.load();
    },
    methods: {
+      konfirmasi_hapus() {
+         konfirmasiHapus.fire().then(result => {
+            if (result.isConfirmed) {
+               this.progress_finish();
+               this.$toast.df102();
+            }
+         });
+      },
+      progress_finish() {
+         this.$Progress.start();
+         this.$Progress.finish();
+      },
+      progress_fail() {
+         this.$Progress.start();
+         this.$Progress.fail();
+      },
       cek(e) {
          console.log(e);
       },
