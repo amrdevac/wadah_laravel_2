@@ -105,6 +105,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       in_data: {},
       value: null,
+      value_input: '',
       options: ["list", "of", "options"]
     };
   },
@@ -398,7 +399,22 @@ var render = function() {
         _c("div", { staticClass: "m-1 border p-2 bg-white" }, [
           _c("label", { attrs: { for: "" } }, [_vm._v("V-Money Input")]),
           _vm._v(" "),
-          _c("div", [_c("money", { staticClass: "form-control" })], 1)
+          _c(
+            "div",
+            [
+              _c("money", {
+                staticClass: "form-control",
+                model: {
+                  value: _vm.value_input,
+                  callback: function($$v) {
+                    _vm.value_input = $$v
+                  },
+                  expression: "value_input"
+                }
+              })
+            ],
+            1
+          )
         ])
       ]),
       _vm._v(" "),

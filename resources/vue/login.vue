@@ -93,35 +93,19 @@ export default {
          })
       };
    },
-   mounted() {
-      nv.$on("registrasi_false", () => {
-         this.registrasi = false;
-      });
-      nv.$on("telah_registrasi", () => {
-         this.registrasi = false;
-         this.telah_registrasi = true;
-      });
-   },
+   mounted() {},
    methods: {
       login() {
-         if (this.captcha) {
-            this.$toast.df102();
-            this.form
-               .post("/login")
-               .then(() => {
-                  this.$toast.df200();
-                  window.location = "/";
-               })
-               .catch(e => {
-                  this.$error.catch(e);
-               });
-         } else {
-            Swal.fire({
-               icon: "warning",
-               title: "Kesalahan",
-               text: "Captcha tidak benar"
+         this.$toast.df102();
+         this.form
+            .post("/login")
+            .then(() => {
+               this.$toast.df200();
+               window.location = "/dashboard";
+            })
+            .catch(e => {
+               this.$error.catch(e);
             });
-         }
       },
       show_password() {
          this.typeInput = !this.typeInput;

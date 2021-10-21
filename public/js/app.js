@@ -2345,8 +2345,12 @@ try {
  */
 
 
-window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); // window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+
+window.axios.defaults.headers.common = {
+  "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+  "X-Requested-With": "XMLHttpRequest"
+};
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -2431,8 +2435,7 @@ var catching = /*#__PURE__*/function () {
         Toast.fire({
           title: "Sesi Login Kadaluarsa ..",
           icon: "warning"
-        }).then(function () {
-          window.location = "/login";
+        }).then(function () {// window.location = "/login";
         });
       }
 
@@ -43037,21 +43040,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "app" },
-    [
-      _c("Navbar"),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "py-3" },
-        [_c("router-view"), _vm._v(" "), _c("vue-progress-bar")],
-        1
-      )
-    ],
-    1
-  )
+  return _c("div", { staticClass: "app" }, [
+    _c(
+      "div",
+      { staticClass: "py-3" },
+      [_c("router-view"), _vm._v(" "), _c("vue-progress-bar")],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

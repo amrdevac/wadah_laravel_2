@@ -48,7 +48,7 @@
             <div class="m-1 border p-2 bg-white">
                <label for>V-Money Input</label>
                <div>
-                  <money class="form-control"></money>
+                  <money class="form-control" v-model="value_input"></money>
                </div>
             </div>
          </div>
@@ -87,6 +87,7 @@ export default {
       return {
          in_data: {},
          value: null,
+         value_input:'',
          options: ["list", "of", "options"]
       };
    },

@@ -45,7 +45,7 @@ export default class catching {
                 title: "Sesi Login Kadaluarsa ..",
                 icon: "warning"
             }).then(() => {
-                window.location = "/login";
+                // window.location = "/login";
             });
         }
 

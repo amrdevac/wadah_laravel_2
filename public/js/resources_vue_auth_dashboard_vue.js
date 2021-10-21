@@ -14,12 +14,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
-    return {};
+    return {
+      in_data: {}
+    };
   },
-  mounted: function mounted() {},
-  methods: {}
+  mounted: function mounted() {
+    this.load();
+  },
+  methods: {
+    load: function load() {
+      var _this = this;
+
+      this.$Progress.start();
+      axios.get("/api/role").then(function (respon) {
+        _this.in_data = respon.data.in_data;
+
+        _this.$Progress.finish();
+      })["catch"](function (e) {
+        _this.$Progress.fail();
+
+        _this.$error["catch"](e);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -108,7 +130,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("helo")])
+  return _c("div", [_vm._v("\n   helo\n   " + _vm._s(_vm.in_data) + "\n")])
 }
 var staticRenderFns = []
 render._withStripped = true

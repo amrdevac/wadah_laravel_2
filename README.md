@@ -15,6 +15,17 @@
 -   vue-carousel
 -   vue-multiselect
 
+###
+
+-   Passport API Auth
+-   Doctrine Dbal
+-   intervention/image
+-   intervention/image
+
+### Modul Implement
+
+-   Auth function
+
 #### New
 
 -   vuex
@@ -29,7 +40,6 @@
 
 ##### Default System
 
--   Auth function
 -   Role Function
 -   Basic Sidebar Function
 -   Basic env.example

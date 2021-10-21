@@ -34,7 +34,6 @@ $in_sidebar = [
 
 <aside class="main-sidebar sidebar-light-lime ">
     <a href="#" class="brand-link">
-        {{-- <img src="/file/default/amr.png " class="img-circle align-middle" alt="User Image"> --}}
         <img src="/file/default/amr.png" alt="AdminLTE Logo" class="brand-image">
         <span class="brand-text font-weight-bolder">AMR APP</span>
     </a>
@@ -43,12 +42,11 @@ $in_sidebar = [
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image " style="align-self: center;">
                     <i class="fa fa-user-circle img-circle align-middle fa-2x" aria-hidden="true"></i>
-                    <img src="/file/default/amr.png " class="img-circle align-middle" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block font-weight-bolder"> {{ substr(auth()->user()->nama, 0, 15) }} </a>
                     <small class="d-block  badge badge-dark font-weight-bold">
-                        {{ auth()->user()->username }}
+                        {{ auth()->user()->email }}
                     </small>
                 </div>
             </div>
@@ -92,9 +90,6 @@ $in_sidebar = [
                         </li>
                     @endif
                 @endforeach
-
-
-
 
                 @auth
                     <li class="nav-item">

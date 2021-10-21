@@ -47,6 +47,13 @@
 
     </div>
 
+    <script>
+        @auth
+            window.user = @json(auth()->user());
+            window.amr_data_permission_users= @json($in_permission);
+        @endauth
+
+    </script>
 </body>
 
 </html>

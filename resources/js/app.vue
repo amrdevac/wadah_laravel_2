@@ -1,6 +1,6 @@
 <template>
    <div class="app">
-      <Navbar></Navbar>
+      <!-- <Navbar></Navbar> -->
       <div class="py-3">
          <router-view></router-view>
          <vue-progress-bar></vue-progress-bar>

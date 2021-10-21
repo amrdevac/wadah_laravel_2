@@ -105,37 +105,19 @@ __webpack_require__.r(__webpack_exports__);
       })
     };
   },
-  mounted: function mounted() {
-    var _this = this;
-
-    nv.$on("registrasi_false", function () {
-      _this.registrasi = false;
-    });
-    nv.$on("telah_registrasi", function () {
-      _this.registrasi = false;
-      _this.telah_registrasi = true;
-    });
-  },
+  mounted: function mounted() {},
   methods: {
     login: function login() {
-      var _this2 = this;
+      var _this = this;
 
-      if (this.captcha) {
-        this.$toast.df102();
-        this.form.post("/login").then(function () {
-          _this2.$toast.df200();
+      this.$toast.df102();
+      this.form.post("/login").then(function () {
+        _this.$toast.df200();
 
-          window.location = "/";
-        })["catch"](function (e) {
-          _this2.$error["catch"](e);
-        });
-      } else {
-        Swal.fire({
-          icon: "warning",
-          title: "Kesalahan",
-          text: "Captcha tidak benar"
-        });
-      }
+        window.location = "/dashboard";
+      })["catch"](function (e) {
+        _this.$error["catch"](e);
+      });
     },
     show_password: function show_password() {
       this.typeInput = !this.typeInput;
