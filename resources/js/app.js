@@ -12,6 +12,16 @@ import App from "./app.vue";
 Vue.use(VueRouter);
 
 // Dependencies
+
+// Vue Multi select
+import Multiselect from "vue-multiselect";
+Vue.component("multiselect", Multiselect);
+// =========
+
+// Vue Carousel
+import VueCarousel from "vue-carousel";
+Vue.use(VueCarousel);
+// ===
 // Vform Component
 import { Form } from "vform";
 window.Form = Form;

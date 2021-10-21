@@ -12,6 +12,8 @@
 -   Delete Confirmation Default
 -   v-money
 -   laravel-vue-pagination
+-   vue-carousel
+-   vue-multiselect
 
 #### New
 
@@ -25,14 +27,9 @@
 
 -   Mask Input
 
-##### Package Default
-
--   vue-carousel
--   vue-multiselect
-
 ##### Default System
 
 -   Auth function
 -   Role Function
 -   Basic Sidebar Function
--   Basic env.example sistem
+-   Basic env.example

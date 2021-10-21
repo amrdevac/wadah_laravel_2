@@ -76,11 +76,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      in_data: {}
+      in_data: {},
+      value: null,
+      options: ["list", "of", "options"]
     };
   },
   name: "home",
@@ -218,7 +243,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "text-center" }, [
+  return _c("div", { staticClass: "text-center container" }, [
     _c("h3", { staticClass: "font-weight-bolder" }, [
       _vm._v("New Amrullah Apps Dev Boiler")
     ]),
@@ -226,8 +251,8 @@ var render = function() {
     _c("hr"),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm" }, [
-        _c("div", { staticClass: "m-1" }, [
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "m-1 border p-2 bg-white" }, [
           _c("label", { attrs: { for: "" } }, [_vm._v("Progress Bar")]),
           _vm._v(" "),
           _c("br"),
@@ -265,8 +290,8 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm" }, [
-        _c("div", { staticClass: "m-1" }, [
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "m-1 border p-2 bg-white" }, [
           _c("label", { attrs: { for: "" } }, [_vm._v("Toast Group")]),
           _vm._v(" "),
           _c("br"),
@@ -334,8 +359,8 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm" }, [
-        _c("div", { staticClass: "m-1" }, [
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "m-1 border p-2 bg-white" }, [
           _c("label", { attrs: { for: "" } }, [
             _vm._v("Test Vuext Setter Getter")
           ]),
@@ -357,8 +382,8 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm" }, [
-        _c("div", { staticClass: "m-1" }, [
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "m-1 border p-2 bg-white" }, [
           _c("label", { attrs: { for: "" } }, [_vm._v("Default Component")]),
           _vm._v(" "),
           _c("div", [_c("kembali")], 1),
@@ -369,11 +394,65 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm" }, [
-        _c("div", { staticClass: "m-1" }, [
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "m-1 border p-2 bg-white" }, [
           _c("label", { attrs: { for: "" } }, [_vm._v("V-Money Input")]),
           _vm._v(" "),
           _c("div", [_c("money", { staticClass: "form-control" })], 1)
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "m-1 border p-2 bg-white" }, [
+          _c("label", { attrs: { for: "" } }, [_vm._v("V-Carouse")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            [
+              _c(
+                "carousel",
+                { attrs: { "per-page": 1, "mouse-drag": true } },
+                [
+                  _c("slide", [
+                    _c("div", { staticClass: "bg-secondary text-white p-3" }, [
+                      _vm._v("Slide 1 Content")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("slide", [
+                    _c("div", { staticClass: "bg-secondary text-white p-3" }, [
+                      _vm._v("Slide 2 Content")
+                    ])
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "m-1 border p-2 bg-white" }, [
+          _c("label", { attrs: { for: "" } }, [_vm._v("V-MultiSelect")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            [
+              _c("multiselect", {
+                attrs: { options: _vm.options },
+                model: {
+                  value: _vm.value,
+                  callback: function($$v) {
+                    _vm.value = $$v
+                  },
+                  expression: "value"
+                }
+              })
+            ],
+            1
+          )
         ])
       ])
     ])
