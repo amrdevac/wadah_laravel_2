@@ -45,7 +45,7 @@ class SidebarService
     {
         return Sidebar::findOrFail($id);
     }
-    
+
     public function menyimpanDataSidebar($request)
     {
         $model = new Sidebar();
