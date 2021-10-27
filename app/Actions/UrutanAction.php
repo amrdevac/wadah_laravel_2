@@ -2,6 +2,8 @@
 
 namespace App\Actions;
 
+use Illuminate\Support\Facades\DB;
+
 class UrutanAction
 {
     public function resufleUrutanIfExist($table, $nama_kolom, $old, $new)
