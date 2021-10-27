@@ -17,12 +17,12 @@ class SidebarService
 
     private function EloquentDataAktif()
     {
-        return Sidebar::where("status_sidebar", true)->orderBy('urutan', "ASC");
+        return Sidebar::where("status_sidebar", true)->orderBy('urutan_sidebar', "ASC");
     }
 
     private function EloquentDataNonaktif()
     {
-        return Sidebar::where("status_sidebar", false)->orderBy('urutan', "ASC");
+        return Sidebar::where("status_sidebar", false)->orderBy('urutan_sidebar', "ASC");
     }
 
 
@@ -88,6 +88,6 @@ class SidebarService
     public function menghapusDataSidebar($id)
     {
         $data = Sidebar::findOrFail($id)->delete();
-        $this->responseService->response(200, "Berhasil Menghapus Data", $data);
+        return $data;
     }
 }
