@@ -39,10 +39,10 @@ class SidebarController extends Controller
     public function update(Request $request, $id)
     {
         $this->sidebarService->memperbaruiDataSidebar($request, $id);
-        return $this->response->menyimpanData($request->all());
+        return $this->response->updateData($request->all());
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $this->sidebarService->menghapusDataSidebar($id);
         return $this->response->menghapusData($id);
