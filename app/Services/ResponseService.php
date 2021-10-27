@@ -22,6 +22,15 @@ class ResponseService
         ];
     }
 
+    public function updateData($data)
+    {
+        return [
+            "status" => 200,
+            "message" => "Berhasil Merubah Data",
+            "data" => $data,
+        ];
+    }
+
     public function menghapusData($id)
     {
         return [
