@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Service\ResponseService;
-use App\Service\SidebarService;
+use App\Services\ResponseService;
+use App\Services\SidebarService;
 use Illuminate\Http\Request;
 
 class SidebarController extends Controller
