@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Sidebar extends Model
 {
     use HasFactory;
+    public $primaryKey = "kd_sidebar";
 }
