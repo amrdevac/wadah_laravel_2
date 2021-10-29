@@ -20,31 +20,30 @@ class SidebarController extends Controller
 
     public function index()
     {
-        $in_sidebar = $this->sidebarService->mendapatkanSeluruhDataSidebar();
+        $in_sidebar = $this->sidebarService->mendapatkanSeluruhDataPaginate($this->paginate);
         return compact("in_sidebar");
     }
 
     public function show($id)
     {
-        $in_sidebar = $this->sidebarService->mendapatkanSeluruhDataSidebar();
+        $in_sidebar = $this->sidebarService->mendapatkanSatuData($id);
         return compact("in_sidebar");
     }
 
     public function store(Request $request)
     {
-        $this->sidebarService->menyimpanDataSidebar($request);
-        return $this->response->menyimpanData($request->all());
+        return $this->response->menyimpanData($this->sidebarService->menyimpanData($request));
     }
 
     public function update(Request $request, $id)
     {
-        $this->sidebarService->memperbaruiDataSidebar($request, $id);
+        $this->sidebarService->memperbaruiData($request, $id);
         return $this->response->updateData($request->all());
     }
 
     public function destroy($id)
     {
-        $this->sidebarService->menghapusDataSidebar($id);
+        $this->sidebarService->menghapusData($id);
         return $this->response->menghapusData($id);
     }
 }
