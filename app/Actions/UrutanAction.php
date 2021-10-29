@@ -14,7 +14,7 @@ class UrutanAction
         return $new;
     }
 
-    public function getUrutanSidebar($nama_table, $nama_kolom)
+    public function getUrutanData($nama_table, $nama_kolom)
     {
         $urutan = DB::table($nama_table)->max($nama_kolom);
         return  $urutan + 1;
