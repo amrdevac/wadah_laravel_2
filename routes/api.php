@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\RoleController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\SidebarController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\Route;
 //     'only' => ["index", "show", "store", "update", "destroy"]
 // ]);
 
+
 Route::middleware('auth:api')->group(function () {
+    Route::apiResources(['sidebar' => SidebarController::class], [
+        'only' => ["index", "show", "store", "update", "destroy"]
+    ]);
+
     Route::apiResources(['role' => RoleController::class], [
         'only' => ["index", "show", "store", "update", "destroy"]
     ]);
