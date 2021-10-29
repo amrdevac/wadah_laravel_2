@@ -1,13 +1,12 @@
 <?php
 
+use App\Http\Controllers\API\AutentikasiController;
 use App\Http\Controllers\API\RoleController;
 use App\Http\Controllers\API\SidebarController;
 use Illuminate\Support\Facades\Route;
 
 
-// Route::apiResources(['role' => RoleController::class], [
-//     'only' => ["index", "show", "store", "update", "destroy"]
-// ]);
+Route::post("/login-app", [AutentikasiController::class, "loginDefault"]);
 
 
 Route::middleware('auth:api')->group(function () {
@@ -29,5 +28,6 @@ Route::middleware('auth:api')->group(function () {
 
 
     // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    //     dd(123);
     //     return $request->user();
     // });
