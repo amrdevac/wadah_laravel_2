@@ -26,37 +26,37 @@ class SidebarService
     }
 
 
-    public function mendapatkanSeluruhDataSidebar()
+    public function mendapatkanSeluruhData()
     {
         return $this->EloquentDataAktif()->get();
     }
 
-    public function mendapatkanDataSeluruhSidebarPaginate($paginate)
+    public function mendapatkanSeluruhDataPaginate($paginate)
     {
         return $this->EloquentDataAktif()->paginate($paginate);
     }
 
-    public function mencariDataSidebarBerdasarkanNama($nama_kolom, $request, $paginate)
+    public function mencariDataBerdasarkanKostum($nama_kolom, $request, $paginate)
     {
         return $this->EloquentDataAktif()->where($nama_kolom, $request->nama)->paginate($paginate);
     }
 
-    public function menampilkanSatuDataSidebar($id)
+    public function mendapatkanSatuData($id)
     {
         return Sidebar::findOrFail($id);
     }
 
-    public function menyimpanDataSidebar($request)
+    public function menyimpanData($request)
     {
         $model = new Sidebar();
-        $model->urutan_sidebar = $this->urutanAction->getUrutanSidebar('sidebars', "urutan_sidebar");
-        $this->mengelolaDataSidebar($model, $request);
+        $model->urutan_sidebar = $this->urutanAction->getUrutanData('sidebars', "urutan_sidebar");
+        return $this->mengelolaData($model, $request);
     }
 
-    public function memperbaruiDataSidebar($request, $id)
+    public function memperbaruiData($request, $id)
     {
         $model = Sidebar::findOrFail($id);
-        $this->mengelolaDataSidebar($model, $request);
+        $this->mengelolaData($model, $request);
     }
 
     public function resufleDataUrutan($request, $id)
@@ -69,7 +69,7 @@ class SidebarService
         $model->save();
     }
 
-    private function mengelolaDataSidebar($model, $request)
+    private function mengelolaData($model, $request)
     {
         if ($request->nama_sidebar) {
             $model->nama_sidebar = $request->nama_sidebar;
@@ -81,11 +81,12 @@ class SidebarService
             $model->icon_sidebar = $request->icon_sidebar;
         }
 
-
         $model->save();
+        
+        return $model;
     }
 
-    public function menghapusDataSidebar($id)
+    public function menghapusData($id)
     {
         $data = Sidebar::findOrFail($id)->delete();
         return $data;
