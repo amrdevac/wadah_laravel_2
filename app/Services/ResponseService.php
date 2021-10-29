@@ -5,7 +5,7 @@ namespace App\Services;
 
 class ResponseService
 {
-    public function response($status  = 200, $pesan, $data)
+    public function responseCostum($status, $pesan, $data)
     {
         return [
             "status" => $status,
