@@ -25,6 +25,10 @@
 ### Modul Implement
 
 -   Auth function
+-   Basic Sidebar Function
+-   Role Function
+-   Basic env.example
+
 
 #### New
 
@@ -40,6 +44,6 @@
 
 ##### Default System
 
--   Role Function
--   Basic Sidebar Function
--   Basic env.example
+- Implement Permission 
+- Basic Example of Modul to implement Role
+
