@@ -12,6 +12,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public $paginate  = 25;
 
     public function resufleUrutanIfExist($table, $nama_kolom, $old, $new)
     {
