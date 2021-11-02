@@ -32,11 +32,17 @@
         .cp {
             cursor: pointer;
         }
+        
+        table>thead>tr>th,
+        table>tbody>tr>td {
+            padding: 0.5em 1em !important;
+            vertical-align: middle !important;
+        }
 
     </style>
 </head>
 
-<body>
+<body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed">
     <div id="app">
         @auth
             @include('layouts.auth')
