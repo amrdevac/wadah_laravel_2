@@ -3,27 +3,41 @@ $in_sidebar = [
     [
         'nama_sidebar' => 'Sidebar',
         'icon_sidebar' => 'fa-align-left',
-        'route' => [
+        'get_sub_sidebar' => [
             [
-                'route_url' => '/kelola-sidebar',
+                'fk_nama_permission' => 'sidebar.index',
                 'nama_sub_sidebar' => 'Daftar Sidebar',
             ],
+            // [
+            //     'fk_nama_permission' => '/sidebar/create',
+            //     'nama_sub_sidebar' => 'Tambah Sidebar',
+            // ],
+        ],
+    ],
+    [
+        'nama_sidebar' => 'Kelola User',
+        'icon_sidebar' => 'fa-users',
+        'get_sub_sidebar' => [
             [
-                'route_url' => '/kelola-sidebar/create',
-                'nama_sub_sidebar' => 'Tambah Sidebar',
+                'fk_nama_permission' => 'kelola-user.index',
+                'nama_sub_sidebar' => 'Daftar User',
+            ],
+            [
+                'fk_nama_permission' => 'kelola-user.create',
+                'nama_sub_sidebar' => 'Tambah User',
             ],
         ],
     ],
     [
         'nama_sidebar' => 'Akses User',
         'icon_sidebar' => 'fa-cogs',
-        'route' => [
+        'get_sub_sidebar' => [
             [
-                'route_url' => '/role',
+                'fk_nama_permission' => 'role.index',
                 'nama_sub_sidebar' => 'Daftar Role',
             ],
             [
-                'route_url' => '/permission',
+                'fk_nama_permission' => '/permission',
                 'nama_sub_sidebar' => 'Daftar Permission',
             ],
         ],
@@ -32,7 +46,10 @@ $in_sidebar = [
 
 @endphp
 
+
 <aside class="main-sidebar sidebar-light-lime ">
+    {{-- {{ $in_sidebars }} --}}
+
     <a href="#" class="brand-link">
         <img src="/file/default/amr.png" alt="AdminLTE Logo" class="brand-image">
         <span class="brand-text font-weight-bolder">AMR APP</span>
@@ -64,30 +81,31 @@ $in_sidebar = [
                     </router-link>
                 </li>
 
-                @foreach ($in_sidebar as $data_sidebar)
-                    @if (count($data_sidebar['route']) != 0)
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link text-gray ">
-                                <i class="nav-icon fa {{ $data_sidebar['icon_sidebar'] }} "></i>
-                                <p>
-                                    {{ $data_sidebar['nama_sidebar'] }}
-                                    <i class="right fa fa-angle-left"></i>
+                @foreach ($in_sidebars as $data_sidebar)
 
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
+                    @if (count($data_sidebar['get_sub_sidebar']) > 0)
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link text-gray ">
+                            <i class="nav-icon fa {{ $data_sidebar['icon_sidebar'] }} "></i>
+                            <p>
+                                {{ $data_sidebar['nama_sidebar'] }}
+                                <i class="right fa fa-angle-left"></i>
 
-                                @foreach ($data_sidebar['route'] as $route)
-                                    <li class="nav-item ">
-                                        {{-- {{ $route['route_url'] }} --}}
-                                        <router-link :to="{name:'{{ $route['route_url'] }}'}"
-                                            class="nav-link text-gray">
-                                            <p>{{ $route['nama_sub_sidebar'] }}</p>
-                                        </router-link>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </li>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+                            @foreach ($data_sidebar['get_sub_sidebar'] as $route)
+                                <li class="nav-item ">
+                                    <router-link :to="{name:'{{ $route['fk_nama_permission'] }}'}"
+                                        class="nav-link text-gray">
+
+                                        <p>{{ $route['nama_sub_sidebar'] }}</p>
+                                    </router-link>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
                     @endif
                 @endforeach
 
