@@ -16,7 +16,7 @@ class CreateImplRolePermissionsTable extends Migration
         Schema::create('impl_role_permissions', function (Blueprint $table) {
             $table->increments("kd_impl_role_permission");
             $table->integer("fk_kd_role")->index();
-            $table->integer("fk_kd_permission")->index();
+            $table->string("fk_kd_permission",100)->index();
             $table->integer("created_by")->index();
             $table->timestamps();
         });
