@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Services\PermissionService;
 use App\Services\ResponseService;
 use App\Services\SidebarService;
 use Illuminate\Http\Request;
@@ -12,21 +13,36 @@ class SidebarController extends Controller
     private SidebarService $sidebarService;
     private ResponseService $response;
 
-    public function __construct(SidebarService $sidebarService, ResponseService $response)
-    {
+    public function __construct(
+        SidebarService $sidebarService,
+        ResponseService $response,
+        PermissionService $permissionService
+    ) {
         $this->sidebarService = $sidebarService;
         $this->response = $response;
+        $this->permissionService = $permissionService;
     }
 
     public function index()
     {
-        $in_sidebar = $this->sidebarService->mendapatkanSeluruhDataPaginate($this->paginate);
+        $in_sidebar = $this->sidebarService->mendapatkanSeluruhDataDenganRelasiSubSidebar();
         return compact("in_sidebar");
+    }
+
+    public function edit($id)
+    {
+        $in_sidebar = $this->sidebarService->mendapatkanSatuDataDenganRelasiSubsidebar($id);
+        return compact("in_sidebar");
+    }
+
+    public function create()
+    {
+        return null;
     }
 
     public function show($id)
     {
-        $in_sidebar = $this->sidebarService->mendapatkanSatuData($id);
+        $in_sidebar = $this->sidebarService->mendapatkanSatuDataDenganRelasiSubsidebar($id);
         return compact("in_sidebar");
     }
 
@@ -37,8 +53,7 @@ class SidebarController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->sidebarService->memperbaruiData($request, $id);
-        return $this->response->updateData($request->all());
+        return $this->response->updateData($this->sidebarService->memperbaruiData($request, $id));
     }
 
     public function destroy($id)
