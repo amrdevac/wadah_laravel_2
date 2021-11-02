@@ -21,13 +21,13 @@ class RoleController extends Controller
     public function index()
     {
 
-        $in_role = $this->roleService->mendapatkanSeluruhData();
+        $in_role = $this->roleService->mendapatkanSeluruhDataPaginate($this->paginate);
         return compact("in_role");
     }
 
     public function show($id)
     {
-        $in_role = $this->roleService->mendapatkanSeluruhData();
+        $in_role = $this->roleService->mendapatkanSatuData($id);
         return compact("in_role");
     }
 
@@ -38,8 +38,8 @@ class RoleController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->roleService->memperbaruiDatamendapatkanSeluruhData($request, $id);
-        return $this->response->updateData($request->all());
+        return $this->response
+            ->updateData($this->roleService->memperbaruiData($request, $id));
     }
 
     public function destroy($id)

@@ -9,7 +9,7 @@ class RoleService extends Controller
 {
     private function EloquentData()
     {
-        return Role::orderBy('created_at', "ASC");
+        return Role::with('getCreator')->orderBy('created_at', "ASC");
     }
 
     public function mendapatkanSeluruhData()
@@ -27,22 +27,22 @@ class RoleService extends Controller
         return $this->EloquentData()->where($nama_kolom, $request->nama)->paginate($paginate);
     }
 
-    public function menampilkanSatuData($id)
+    public function mendapatkanSatuData($id)
     {
-        return $this->EloquentData()->first($id);
+        return Role::with("getAllPermission")->findOrFail($id);
     }
 
     public function menyimpanData($request)
     {
         $model = new Role();
-        $model->created_by =  1; #$this->authGetKdUser();
+        $model->created_by =  $this->authGetKdUser();
         return $this->mengelolaData($model, $request);
     }
 
     public function memperbaruiData($request, $id)
     {
         $model = Role::findOrFail($id);
-        $this->mengelolaData($model, $request);
+        return $this->mengelolaData($model, $request);
     }
 
     private  function mengelolaData($model, $request)
