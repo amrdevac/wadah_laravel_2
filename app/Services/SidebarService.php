@@ -20,6 +20,11 @@ class SidebarService
         return Sidebar::where("status_sidebar", true)->orderBy('urutan_sidebar', "ASC");
     }
 
+    private function EloquentData()
+    {
+        return Sidebar::orderBy('urutan_sidebar', "ASC");
+    }
+
     private function EloquentDataNonaktif()
     {
         return Sidebar::where("status_sidebar", false)->orderBy('urutan_sidebar', "ASC");
@@ -30,6 +35,7 @@ class SidebarService
     {
         return $this->EloquentDataAktif()->get();
     }
+
 
     public function mendapatkanSeluruhDataPaginate($paginate)
     {
@@ -46,6 +52,23 @@ class SidebarService
         return Sidebar::findOrFail($id);
     }
 
+    public function mendapatkanSatuDataDenganRelasiSubsidebar($id)
+    {
+        return Sidebar::with("getSubsidebar")->findOrFail($id);
+    }
+
+    public function mendapatkanSeluruhDataDenganRelasiSubsidebar()
+    {
+        return $this->EloquentDataAktif()->with("getSubsidebar")->get();
+    }
+
+    public function mendapatkanSeluruhDataDenganRelasiSubsidebarUserLogin($list_sidebar)
+    {
+        return $this->EloquentDataAktif()->with(["getSubSidebar" => function ($q) use ($list_sidebar) {
+            return $q->whereIn("fk_nama_permission", $list_sidebar)->get();
+        }])->orderBy("urutan_sidebar")->get();
+    }
+
     public function menyimpanData($request)
     {
         $model = new Sidebar();
@@ -56,7 +79,10 @@ class SidebarService
     public function memperbaruiData($request, $id)
     {
         $model = Sidebar::findOrFail($id);
-        $this->mengelolaData($model, $request);
+        if ($request->urutan_only) {
+            return $this->resufleDataUrutan($request, $id);
+        }
+        return $this->mengelolaData($model, $request);
     }
 
     public function resufleDataUrutan($request, $id)
@@ -74,7 +100,7 @@ class SidebarService
         if ($request->nama_sidebar) {
             $model->nama_sidebar = $request->nama_sidebar;
         }
-        if ($request->status_sidebar) {
+        if ($request->has("status_sidebar")) {
             $model->status_sidebar = $request->status_sidebar;
         }
         if ($request->icon_sidebar) {
@@ -82,7 +108,7 @@ class SidebarService
         }
 
         $model->save();
-        
+
         return $model;
     }
 
