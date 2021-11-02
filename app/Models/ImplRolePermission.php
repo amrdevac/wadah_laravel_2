@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ImplRolePermission extends Model
 {
     use HasFactory;
+    
+    public $primaryKey = "kd_impl_role_permission";
 }
