@@ -9,7 +9,7 @@ class UrutanAction
     public function resufleUrutanIfExist($table, $nama_kolom, $old, $new)
     {
         DB::table($table)->where($nama_kolom, $new)->update(
-            ["urutan_sidebar" => $old]
+            [$nama_kolom => $old]
         );
         return $new;
     }
