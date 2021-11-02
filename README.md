@@ -1,6 +1,6 @@
 # Wadah Laravel Versi 2.0 (Inprogress)
 
-#### 70% Implementasi sudah di terapkan dari versi sebelumnya
+#### 100% Implementasi sudah di terapkan dari versi sebelumnya
 
 -   Vue Router
 -   Vue Progress Bar
@@ -20,7 +20,6 @@
 -   Passport API Auth
 -   Doctrine Dbal
 -   intervention/image
--   intervention/image
 
 ### Modul Implement
 
@@ -28,6 +27,9 @@
 -   Basic Sidebar Function
 -   Role Function
 -   Basic env.example
+-   Implement Permission
+-   Implement Role to Permission 
+-   Basic Example of Modul to implement Role
 
 
 #### New
@@ -40,12 +42,8 @@
 
 ##### Implementasi Global Function
 
--   Mask Input
 
 ##### Default System
 
-- Implement Permission
-- Implement Role to Permission 
-- Basic Example of Modul to implement Role
 
 
