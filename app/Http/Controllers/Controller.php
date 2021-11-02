@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class Controller extends BaseController
 {
@@ -21,7 +24,6 @@ class Controller extends BaseController
         );
         return $new;
     }
-    
     public function initialAuditTrail($jenis, $nama_form, $model, $dataBeforeUpdated)
     {
         $data = [];
@@ -49,21 +51,7 @@ class Controller extends BaseController
     }
 
 
-    public function role_permission()
-    {
-        $nama_akses = Route::currentRouteName();
-        $cek =  Role::with("getAllPermission")
-            ->where('id', auth("api")->user()->role)->first();
-        $hasil = false;
-        if ($cek != null) {
-            foreach ($cek->getAllPermission as $pairing_data) {
-                if ($pairing_data->route_url == $nama_akses) {
-                    $hasil = true;
-                }
-            }
-        }
-        $hasil  ?  "" : abort(403, "Fobiden " . $nama_akses);
-    }
+    
 
     public function get_primaryKey($kd)
     {
