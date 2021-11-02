@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Action\getAllRoutes as dataApiRoutes;
+use App\Actions\getAllRoutes as dataApiRoutes;
 use Illuminate\Console\Command;
 
 class getAllRoutes extends Command
