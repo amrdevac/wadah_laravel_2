@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/dashboard', HalamanController::class, "basic");
+Route::get('/dashboard', HalamanController::class, "basic")->name('dashboard');
 
 Auth::routes();
 
@@ -22,4 +22,5 @@ Auth::routes();
 // Route::get('/{any?}', function () {
 //     return view('layouts.app');
 // });
-Route::get('{path}', HalamanController::class)->where('path', '(.*)');
+Route::get('/', HalamanController::class, "homepage")->name("homepage");
+Route::get('{path}', HalamanController::class)->where('path', '(.*)')->name("notFound");
