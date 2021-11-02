@@ -5,7 +5,7 @@ window.Vue = require("vue").default;
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import router from "./router/index";
+import router from "./router/router";
 import store from "./store/index";
 import App from "./app.vue";
 
@@ -77,19 +77,35 @@ import konfirmasiHapus from "./config/delete_confirmation";
 window.konfirmasiHapus = konfirmasiHapus;
 // ====
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-// Vue.component(
-//     "example-component",
-//     require("./components/ExampleComponent.vue").default
-// );
 // Komponen
 Vue.component("pagination", require("laravel-vue-pagination"));
-
 Vue.component("kosong", require("./components/kosong.vue").default);
 Vue.component("kembali", require("./components/kembali.vue").default);
 Vue.component("loading", require("./components/loading.vue").default);
+
+// API
+Vue.prototype.$api_role = "/api/role";
+Vue.prototype.$api_permission = "/api/permission";
+Vue.prototype.$api_sidebar = "/api/sidebar";
+Vue.prototype.$api_sub_sidebar = "/api/subsidebar";
+Vue.prototype.$api_kelola_user = "/api/kelola-user";
+Vue.prototype.$api_role_permission = "/api/role-permission";
+Vue.prototype.$api_audit_trail = "/api/audit-trail";
+Vue.prototype.$api_jenis_ketentuan = "/api/jenis-ketentuan";
+Vue.prototype.$api_ketentuan_penggunaan = "/api/ketentuan-penggunaan";
+Vue.prototype.$api_user_agreement = "/api/user-agreement";
+
+Vue.prototype.$canDoStore = false;
+Vue.prototype.$canDoUpdate = false;
+Vue.prototype.$canDoDestroy = false;
+
+Vue.filter("STATUS", function(data) {
+    if (data == 1) {
+        return "Aktif";
+    } else {
+        return "Nonaktif";
+    }
+});
 
 const app = new Vue({
     el: "#app",
