@@ -23,25 +23,8 @@ __webpack_require__.r(__webpack_exports__);
       in_data: {}
     };
   },
-  mounted: function mounted() {
-    this.load();
-  },
-  methods: {
-    load: function load() {
-      var _this = this;
-
-      this.$Progress.start();
-      axios.get("/api/role").then(function (respon) {
-        _this.in_data = respon.data.in_data;
-
-        _this.$Progress.finish();
-      })["catch"](function (e) {
-        _this.$Progress.fail();
-
-        _this.$error["catch"](e);
-      });
-    }
-  }
+  mounted: function mounted() {},
+  methods: {}
 });
 
 /***/ }),
