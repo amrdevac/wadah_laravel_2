@@ -21,7 +21,8 @@ class getAllRoutes
             'destroy' => 'Menghapus',
             'search' => 'Pencarian',
         ];
-        
+        $data_tersimpan = [];
+
         foreach ($data_url as  $url) {
             if (explode('/', $url->uri)[0] == 'api') {
                 if (empty($url->action['as'])) {
@@ -46,9 +47,14 @@ class getAllRoutes
                             'route_url' => $url->action['as'],
                             'nama_grup' => $data_explode[0],
                         ]);
+
+                        $data_tersimpan[] = [$data_nama  . ' ' . $data_explode[0],
+                                            $url->action['as'] ,
+                                            $data_explode[0]];
                     }
                 }
             }
         }
+        dd($data_tersimpan);
     }
 }
