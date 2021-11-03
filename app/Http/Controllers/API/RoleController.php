@@ -31,6 +31,16 @@ class RoleController extends Controller
         return compact("in_role");
     }
 
+    public function create()
+    {
+        return null;
+    }
+
+    public function edit()
+    {
+       return null;
+    }
+
     public function store(Request $request)
     {
         return $this->response->menyimpanData($this->roleService->menyimpanData($request));
