@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\getRolePermission;
+use App\Actions\GetRolePermission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HalamanController extends Controller
 {
 
-    private getRolePermission $getRolePermission;
+    private GetRolePermission $getRolePermission;
 
-    public function __construct(getRolePermission $getRolePermission)
+    public function __construct(GetRolePermission $getRolePermission)
     {
         $this->getRolePermission = $getRolePermission;
     }
