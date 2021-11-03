@@ -73,7 +73,7 @@ $in_sidebar = [
             <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <li class="nav-item">
-                    <router-link to="/" class="nav-link text-gray">
+                    <router-link to="/dashboard " class="nav-link text-gray">
                         <i class="nav-icon fa fa-home  "></i>
                         <p>
                             Halaman Utama
