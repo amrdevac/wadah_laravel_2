@@ -1,7 +1,6 @@
 <template>
    <div>
-      helo
-      {{in_data}}
+      helo ini ada update dari branch development
    </div>
 </template>
 <script>
