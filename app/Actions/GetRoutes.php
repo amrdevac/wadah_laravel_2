@@ -5,7 +5,7 @@ namespace App\Actions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-class getAllRoutes
+class GetAllRoutes
 {
 
     public function set_default_route_name_list()
