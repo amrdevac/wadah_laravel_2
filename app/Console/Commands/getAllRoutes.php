@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\Actions\getAllRoutes as dataApiRoutes;
 use Illuminate\Console\Command;
 
-class getAllRoutes extends Command
+class GetAllRoutes extends Command
 {
     /**
      * The name and signature of the console command.
