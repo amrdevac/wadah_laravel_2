@@ -108,7 +108,7 @@ __webpack_require__.r(__webpack_exports__);
         if (result.isConfirmed) {
           _this2.$toast.df102();
 
-          axios["delete"](_this2.$api_role_permission + "/" + id).then(function () {
+          axios["delete"](_this2.$api_role_permission + "/" + _this2.id + "/" + id).then(function () {
             _this2.$toast.df200();
 
             _this2.load_role();

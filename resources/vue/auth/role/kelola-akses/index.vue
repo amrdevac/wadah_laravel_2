@@ -89,7 +89,7 @@ export default {
             if (result.isConfirmed) {
                this.$toast.df102();
                axios
-                  .delete(this.$api_role_permission + "/" + id)
+                  .delete(this.$api_role_permission + "/" + this.id + "/" + id)
                   .then(() => {
                      this.$toast.df200();
                      this.load_role();

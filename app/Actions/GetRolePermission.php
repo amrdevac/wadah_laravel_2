@@ -7,7 +7,7 @@ use App\Models\Sidebar;
 use App\Services\SidebarService;
 use Illuminate\Support\Facades\DB;
 
-class getRolePermission
+class GetRolePermission
 {
 
     private SidebarService $sidebarService;

@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
-class app_starter extends Command
+class AppStarter extends Command
 {
     /**
      * The name and signature of the console command.

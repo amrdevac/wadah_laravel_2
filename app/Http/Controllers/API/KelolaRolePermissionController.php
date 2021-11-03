@@ -37,10 +37,10 @@ class KelolaRolePermissionController extends Controller
     {
         $in_permission  = $this->permissionService
             ->mencariDataBerdasarkanKostumYangBelumTerpilih("nama_route", $request->cari, $kd_role);
-        return compact("in_permission");    
+        return compact("in_permission");
     }
 
-    public function store(Request    $request, $kd_role)
+    public function store(Request $request, $kd_role)
     {
         return $this->reponseService->menyimpanData(
             $this->rolepermissionService
@@ -48,8 +48,8 @@ class KelolaRolePermissionController extends Controller
         );
     }
 
-    public function destroy($id)
+    public function destroy($id, $kd_role_permission)
     {
-        $this->rolepermissionService->menghapusDataPermissionTerpilih($id);
+        $this->rolepermissionService->menghapusDataPermissionTerpilih($kd_role_permission);
     }
 }
