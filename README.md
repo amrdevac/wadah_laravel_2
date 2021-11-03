@@ -37,11 +37,12 @@
 -   vuex
 -   Image compresor
 -   Hot reload supported
+-   CRUD Console amr:crud {name}
+-   Starter Data amr:starter 
 
 #### Todo
 
 ##### Implementasi Global Function
-
 
 ##### Default System
 
