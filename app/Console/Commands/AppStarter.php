@@ -41,7 +41,7 @@ class AppStarter extends Command
     {
 
         # asking for confirmation
-        if ($this->confirm("DB : " . $_ENV['DB_DATABASE'] . 'seluruh data akan di hapus dan membuat data starter')) {
+        if ($this->confirm("DB : " . $_ENV['DB_DATABASE'] . ' seluruh data akan di hapus dan membuat data starter')) {
             Artisan::call("db:wipe");
             $path = public_path('starter_db.sql');
             $sql = file_get_contents($path);
