@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2021 at 08:44 AM
+-- Generation Time: Nov 04, 2021 at 09:15 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -472,8 +472,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`kd_user`, `nama`, `email`, `username`, `role`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `status_user`) VALUES
-(101160779, 'Fahmi Amr', 'fahmi@fahmi.com', 'fahmi', '11', NULL, '$2y$10$EKhBNxS3oVkb9HMmH.viHe.23MtyFaetL/n2YA1DfyTyxS5PMzXWO', NULL, '2021-10-31 23:40:45', '2021-11-02 00:30:48', 1),
-(101195007, 'Dr. Hollis Kuhic Sr.', 'david.sipes@example.net', 'admin', '10', '2021-10-21 02:23:05', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'gkSwXKh318cm4nL53oqWXg4S7m15MCJlijIlXJbv0V0TIFt5iqcY6XpFJkKa', '2021-10-21 02:23:05', '2021-10-31 18:49:01', 1);
+(101195007, 'Fahmi Amrullah', 'david.sipes@example.net', 'admin', '10', '2021-10-21 02:23:05', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'gkSwXKh318cm4nL53oqWXg4S7m15MCJlijIlXJbv0V0TIFt5iqcY6XpFJkKa', '2021-10-21 02:23:05', '2021-10-31 18:49:01', 1);
 
 --
 -- Indexes for dumped tables
