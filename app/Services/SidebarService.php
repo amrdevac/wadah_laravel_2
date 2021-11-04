@@ -2,17 +2,20 @@
 
 namespace App\Services;
 
-use App\Actions\UrutanAction;
 use App\Models\Sidebar;
+use App\Actions\UrutanAction;
+use Illuminate\Support\Facades\Route;
 
 class SidebarService
 {
 
     private UrutanAction $urutanAction;
+    private AuditTrailService $auditTrailService;
 
-    public function __construct(UrutanAction $urutanAction)
+    public function __construct(UrutanAction $urutanAction, AuditTrailService $auditTrailService)
     {
         $this->urutanAction = $urutanAction;
+        $this->auditTrailService = $auditTrailService;
     }
 
     private function EloquentDataAktif()
@@ -79,20 +82,10 @@ class SidebarService
     public function memperbaruiData($request, $id)
     {
         $model = Sidebar::findOrFail($id);
-        if ($request->urutan_only) {
-            return $this->resufleDataUrutan($request, $id);
-        }
-        return $this->mengelolaData($model, $request);
-    }
-
-    public function resufleDataUrutan($request, $id)
-    {
-        $model = Sidebar::findOrFail($id);
-        $old = $model->urutan_sidebar;
-        $new =  $request->urutan_sidebar;
-        $this->urutanAction->resufleUrutanIfExist("sidebars", "urutan_sidebar", $old, $new);
-        $model->urutan_sidebar = $request->urutan_sidebar;
-        $model->save();
+        $dataSebelumBerubah = $model->getOriginal();
+        $response = $this->mengelolaData($model, $request);
+        $this->auditTrailService->inisialisasiAuditTrail("update", "Sidebar", $model, $dataSebelumBerubah);
+        return $response;
     }
 
     private function mengelolaData($model, $request)
@@ -106,6 +99,14 @@ class SidebarService
         if ($request->icon_sidebar) {
             $model->icon_sidebar = $request->icon_sidebar;
         }
+
+        if ($request->urutan_only) {
+            $old = $model->urutan_sidebar;
+            $new =  $request->urutan_sidebar;
+            $this->urutanAction->resufleUrutanIfExist("sidebars", "urutan_sidebar", $old, $new);
+            $model->urutan_sidebar = $request->urutan_sidebar;
+        }
+
 
         $model->save();
 
