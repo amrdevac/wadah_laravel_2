@@ -10,7 +10,7 @@ class LoginService
     private $secret = 'amr_apps_basic';
 
     private $selected_data = [
-        "kd_users",
+        "kd_user",
         "role",
         "nama",
         "email",
