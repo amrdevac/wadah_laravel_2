@@ -31,7 +31,6 @@
 -   Implement Role to Permission 
 -   Basic Example of Modul to implement Role
 
-
 #### New
 
 -   vuex
@@ -39,6 +38,7 @@
 -   Hot reload supported
 -   CRUD Console amr:crud {name}
 -   Starter Data amr:starter 
+-   Audit Trail
 
 #### Todo
 

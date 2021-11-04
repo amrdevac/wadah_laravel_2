@@ -53,6 +53,10 @@ Vue.use(money, {
     precision: 0
 });
 // =====
+// Day JS
+import VueDayjs from "vue-dayjs-plugin";
+Vue.use(VueDayjs);
+// =====
 
 // Kostum
 window.nv = new Vue();

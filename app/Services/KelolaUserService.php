@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Hash;
 
 class KelolaUserService extends Controller
 {
+    private AuditTrailService $auditTrailService;
+
+    public function __construct(AuditTrailService $auditTrailService)
+    {
+        $this->auditTrailService = $auditTrailService;
+    }
 
     private function EloquentDataAktif()
     {
@@ -54,7 +60,10 @@ class KelolaUserService extends Controller
     public function memperbaruiData($request, $id)
     {
         $model = User::findOrFail($id);
-        return $this->mengelolaData($model, $request);
+        $dataSebelumBerubah = $model->getOriginal();
+        $dataUserTerbaru = $this->mengelolaData($model, $request);
+        $this->auditTrailService->inisialisasiAuditTrail("update", "User", $model, $dataSebelumBerubah);
+        return $dataUserTerbaru;
     }
 
     private function mengelolaData($model, $request)
