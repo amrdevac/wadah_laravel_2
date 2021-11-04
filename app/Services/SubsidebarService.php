@@ -77,17 +77,6 @@ class SubsidebarService
         $this->mengelolaData($model, $request);
     }
 
-    // public function resufleDataUrutan($request, $id)
-    // {
-    //     $model = Sidebar::findOrFail($id);
-    //     $old = $model->urutan_sidebar;
-    //     $new =  $request->urutan_sidebar;
-    //     $this->urutanAction->resufleUrutanIfExist("sidebars", "urutan_sidebar", $old, $new);
-    //     $model->urutan_sidebar = $request->urutan_sidebar;
-    //     $model->save();
-    // }
-
-
     private function mengelolaData($model, $request)
     {
 
