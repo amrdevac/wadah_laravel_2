@@ -4,9 +4,18 @@ namespace App\Services;
 
 use App\Http\Controllers\Controller;
 use App\Models\{{modelName}};
+use App\Services\AuditTrailService;
 
 class {{modelName}}Service extends Controller
 {
+
+    private AuditTrailService $auditTrailService;
+
+    public function __construct(AuditTrailService $auditTrailService)
+    {
+        $this->auditTrailService = $auditTrailService;
+    }
+
     private function EloquentData()
     {
         return {{modelName}}::with('getCreator')->orderBy('created_at', "ASC");
@@ -42,7 +51,10 @@ class {{modelName}}Service extends Controller
     public function memperbaruiData($request, $id)
     {
         $model = {{modelName}}::findOrFail($id);
-        return $this->mengelolaData($model, $request);
+        $dataSebelumBerubah = $model->getOriginal();
+        $response =  $this->mengelolaData($model, $request);
+        $this->auditTrailService->inisialisasiAuditTrail("update", "{{modelName}}", $model, $dataSebelumBerubah);
+        return $response;
     }
 
     private  function mengelolaData($model, $request)
