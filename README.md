@@ -1,4 +1,4 @@
-# Wadah Laravel Versi 2.0 (Inprogress)
+# Wadah Laravel Versi 2.0
 
 #### 100% Implementasi sudah di terapkan dari versi sebelumnya
 
