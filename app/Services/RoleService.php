@@ -7,6 +7,13 @@ use App\Models\Role;
 
 class RoleService extends Controller
 {
+    private AuditTrailService $auditTrailService;
+
+    public function __construct(AuditTrailService $auditTrailService)
+    {
+        $this->auditTrailService = $auditTrailService;
+    }
+
     private function EloquentData()
     {
         return Role::with('getCreator')->orderBy('created_at', "ASC");
@@ -42,7 +49,10 @@ class RoleService extends Controller
     public function memperbaruiData($request, $id)
     {
         $model = Role::findOrFail($id);
-        return $this->mengelolaData($model, $request);
+        $dataSebelumBerubah = $model->getOriginal();
+        $response =  $this->mengelolaData($model, $request);
+        $this->auditTrailService->inisialisasiAuditTrail("update", "Role", $model, $dataSebelumBerubah);
+        return $response;
     }
 
     private  function mengelolaData($model, $request)

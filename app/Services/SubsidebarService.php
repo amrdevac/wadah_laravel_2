@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use App\Actions\UrutanAction;
 use App\Models\SubSidebar;
-use Illuminate\Support\Facades\Auth;
+use App\Actions\UrutanAction;
+use App\Services\AuditTrailService;
 
 class SubsidebarService
 {
@@ -18,10 +18,12 @@ class SubsidebarService
     ];
 
     private UrutanAction $urutanAction;
+    private AuditTrailService $auditTrailService;
 
-    public function __construct(UrutanAction  $urutanAction)
+    public function __construct(UrutanAction  $urutanAction, AuditTrailService $auditTrailService)
     {
         $this->urutanAction = $urutanAction;
+        $this->auditTrailService = $auditTrailService;
     }
 
     private function EloquentDataAktif()
@@ -74,7 +76,10 @@ class SubsidebarService
     public function memperbaruiData($request, $id)
     {
         $model = SubSidebar::findOrFail($id);
-        $this->mengelolaData($model, $request);
+        $dataSebelumBerubah = $model->getOriginal();
+        $response = $this->mengelolaData($model, $request);
+        $this->auditTrailService->inisialisasiAuditTrail("update", "Subsidebar", $model, $dataSebelumBerubah);
+        return $response;
     }
 
     private function mengelolaData($model, $request)
