@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2021 at 08:43 AM
+-- Generation Time: Nov 04, 2021 at 08:44 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -110,7 +110,8 @@ INSERT INTO `impl_role_permissions` (`kd_impl_role_permission`, `fk_kd_role`, `f
 (67, 10, 'subsidebar.store', 101195007, '2021-11-02 02:03:18', '2021-11-02 02:03:18'),
 (68, 10, 'subsidebar.show', 101195007, '2021-11-02 02:03:19', '2021-11-02 02:03:19'),
 (69, 10, 'subsidebar.update', 101195007, '2021-11-02 02:03:20', '2021-11-02 02:03:20'),
-(70, 10, 'subsidebar.destroy', 101195007, '2021-11-02 02:03:21', '2021-11-02 02:03:21');
+(70, 10, 'subsidebar.destroy', 101195007, '2021-11-02 02:03:21', '2021-11-02 02:03:21'),
+(71, 10, 'audit-trail.index', 101195007, '2021-11-04 00:07:31', '2021-11-04 00:07:31');
 
 -- --------------------------------------------------------
 
@@ -145,7 +146,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2021_10_21_085718_create_impl_role_permissions_table', 1),
 (15, '2021_11_01_013931_add_status_user_to_users', 2),
 (17, '2021_11_01_022220_create_permissions_table', 3),
-(18, '2021_11_01_134504_add_nama_route_to__sub_sidebar', 4);
+(18, '2021_11_01_134504_add_nama_route_to__sub_sidebar', 4),
+(19, '2021_11_04_040609_create_aplikasis_table', 5);
 
 -- --------------------------------------------------------
 
@@ -170,8 +172,11 @@ CREATE TABLE `oauth_access_tokens` (
 --
 
 INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
+('13f7ac341cdc156e8b7bbf3ae7ff142f6aeff90677a68dda4f3d0e23b8cc10354b07bf0aa97fac40', 101195007, 8, 'amr_apps_basic', '[]', 0, '2021-11-03 21:18:54', '2021-11-03 21:18:54', '2022-11-04 04:18:54'),
+('1ef3635c9d5c2bbf633f6302ac40f2457db61ec31f96a5130bbdbad471af8f1803f752d4f849abcd', 101195007, 8, 'amr_apps_basic', '[]', 0, '2021-11-03 21:20:49', '2021-11-03 21:20:49', '2022-11-04 04:20:49'),
 ('83e83d25d04568eae309abc0061938c2f2daef34aa8b29be60f643a2ad283c7bcc688db352a73e46', 101195007, 6, 'testing', '[]', 0, '2021-10-28 21:08:28', '2021-10-28 21:08:28', '2022-10-29 04:08:28'),
-('cf9603a19d59b39046f15d7987cb969e87e434a9e0d3a8b9b8366535a2622e878831cba22d703f73', 101195007, 6, 'amr_apps_basic', '[]', 0, '2021-10-30 01:14:37', '2021-10-30 01:14:37', '2022-10-30 08:14:37');
+('cf9603a19d59b39046f15d7987cb969e87e434a9e0d3a8b9b8366535a2622e878831cba22d703f73', 101195007, 6, 'amr_apps_basic', '[]', 0, '2021-10-30 01:14:37', '2021-10-30 01:14:37', '2022-10-30 08:14:37'),
+('d1f2d81ede2ea6781b7a452add36f0082b4f633d8827a8313baf28909751d32f524531c6f3398e52', 101195007, 8, 'amr_apps_basic', '[]', 0, '2021-11-03 21:18:40', '2021-11-03 21:18:40', '2022-11-04 04:18:40');
 
 -- --------------------------------------------------------
 
@@ -219,7 +224,9 @@ INSERT INTO `oauth_clients` (`id`, `user_id`, `name`, `secret`, `provider`, `red
 (4, NULL, 'Laravel Password Grant Client', 'HB63ePD4BRN95n70tMQcTV2UgYQf8hnIE7keYtqE', 'users', 'http://localhost', 0, 1, 0, '2021-10-28 20:37:51', '2021-10-28 20:37:51'),
 (5, NULL, 'testing', 'tY4WMEL9tYAngtMVCduG9fkyGrQKjNcRafyVrc1d', NULL, 'http://localhost', 1, 0, 0, '2021-10-28 20:46:30', '2021-10-28 20:46:30'),
 (6, NULL, 'Laravel Personal Access Client', 'cxakF5DSfmmVen0AUDj1HTsRV55naAPJHGBEbSAL', NULL, 'http://localhost', 1, 0, 0, '2021-10-28 21:07:50', '2021-10-28 21:07:50'),
-(7, NULL, 'Laravel Password Grant Client', 'IBtAo01I4rFL2jpm2ejZ5r791qD3sqykkDTMqeh0', 'users', 'http://localhost', 0, 1, 0, '2021-10-28 21:07:50', '2021-10-28 21:07:50');
+(7, NULL, 'Laravel Password Grant Client', 'IBtAo01I4rFL2jpm2ejZ5r791qD3sqykkDTMqeh0', 'users', 'http://localhost', 0, 1, 0, '2021-10-28 21:07:50', '2021-10-28 21:07:50'),
+(8, NULL, 'AMR_APPS_BOILER Personal Access Client', 'sIM3TPBHSHVQ8bg5qJQj0wCScnkCZvDuIlZ5qNRL', NULL, 'http://localhost', 1, 0, 0, '2021-11-03 21:05:28', '2021-11-03 21:05:28'),
+(9, NULL, 'AMR_APPS_BOILER Password Grant Client', 'rVhEo5uwbfAtfhT875VlpDLMTC4ILEWqwcB3uCbH', 'users', 'http://localhost', 0, 1, 0, '2021-11-03 21:05:28', '2021-11-03 21:05:28');
 
 -- --------------------------------------------------------
 
@@ -242,7 +249,8 @@ INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `u
 (1, 1, '2021-10-21 02:31:01', '2021-10-21 02:31:01'),
 (2, 3, '2021-10-28 20:37:51', '2021-10-28 20:37:51'),
 (3, 5, '2021-10-28 20:46:30', '2021-10-28 20:46:30'),
-(4, 6, '2021-10-28 21:07:50', '2021-10-28 21:07:50');
+(4, 6, '2021-10-28 21:07:50', '2021-10-28 21:07:50'),
+(5, 8, '2021-11-03 21:05:28', '2021-11-03 21:05:28');
 
 -- --------------------------------------------------------
 
@@ -318,7 +326,9 @@ INSERT INTO `permissions` (`kd_permission`, `nama_route`, `nama_grup`, `route_ur
 (135, 'Menyimpan subsidebar', 'subsidebar', 'subsidebar.store', NULL, NULL),
 (136, 'Detail subsidebar', 'subsidebar', 'subsidebar.show', NULL, NULL),
 (137, 'Update subsidebar', 'subsidebar', 'subsidebar.update', NULL, NULL),
-(138, 'Menghapus subsidebar', 'subsidebar', 'subsidebar.destroy', NULL, NULL);
+(138, 'Menghapus subsidebar', 'subsidebar', 'subsidebar.destroy', NULL, NULL),
+(139, 'Daftar audit-trail', 'audit-trail', 'audit-trail.index', NULL, NULL),
+(140, 'Detail audit-trail', 'audit-trail', 'audit-trail.show', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -382,7 +392,7 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`kd_role`, `nama_role`, `created_by`, `created_at`, `updated_at`) VALUES
-(10, 'Super Admin', 101195007, '2021-10-30 01:50:28', '2021-10-30 01:50:28'),
+(10, 'Super Admin', 101195007, '2021-10-30 01:50:28', '2021-11-04 00:40:33'),
 (11, 'User Biasa', 101195007, '2021-10-31 23:40:54', '2021-11-02 01:28:41');
 
 -- --------------------------------------------------------
@@ -406,8 +416,8 @@ CREATE TABLE `sidebars` (
 --
 
 INSERT INTO `sidebars` (`kd_sidebar`, `nama_sidebar`, `status_sidebar`, `urutan_sidebar`, `icon_sidebar`, `created_at`, `updated_at`) VALUES
-(9, 'Pengelolaan Aplikasi', 1, 2, 'fa-cogs', '2021-10-31 23:49:10', '2021-10-31 23:49:10'),
-(10, 'Daftar User', 1, 1, 'fa-users', '2021-11-01 07:22:54', '2021-11-02 01:35:19');
+(9, 'Pengelolaan Aplikasi', 1, 1, 'fa-cogs', '2021-10-31 23:49:10', '2021-11-04 00:08:07'),
+(10, 'Daftar User', 1, 2, 'fa-users', '2021-11-01 07:22:54', '2021-11-02 01:35:19');
 
 -- --------------------------------------------------------
 
@@ -431,10 +441,11 @@ CREATE TABLE `sub_sidebars` (
 --
 
 INSERT INTO `sub_sidebars` (`kd_sub_sidebar`, `fk_kd_sidebar`, `nama_sub_sidebar`, `status_sub_sidebar`, `urutan_sub_sidebar`, `created_at`, `updated_at`, `fk_nama_permission`) VALUES
-(1, 9, 'Daftar sidebar', 1, 1, '2021-11-01 06:48:22', '2021-11-02 02:06:54', 'sidebar.index'),
-(2, 9, 'Daftar role', 1, 2, '2021-11-01 07:16:43', '2021-11-02 02:06:57', 'role.index'),
-(3, 9, 'Daftar permission', 1, 3, '2021-11-01 07:16:53', '2021-11-02 02:06:14', 'permission.index'),
-(5, 10, 'Daftar kelola-user', 1, 4, '2021-11-01 07:23:24', '2021-11-01 07:23:24', 'kelola-user.index');
+(1, 9, 'Daftar sidebar', 1, 21, '2021-11-01 06:48:22', '2021-11-04 00:09:56', 'sidebar.index'),
+(2, 9, 'Daftar role', 1, 3, '2021-11-01 07:16:43', '2021-11-04 00:05:44', 'role.index'),
+(3, 9, 'Daftar permission', 1, 4, '2021-11-01 07:16:53', '2021-11-04 00:08:36', 'permission.index'),
+(5, 10, 'Daftar kelola-user', 1, 12, '2021-11-01 07:23:24', '2021-11-04 00:13:51', 'kelola-user.index'),
+(6, 9, 'Daftar audit-trail', 1, 5, '2021-11-04 00:07:46', '2021-11-04 00:07:46', 'audit-trail.index');
 
 -- --------------------------------------------------------
 
@@ -600,31 +611,31 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `impl_role_permissions`
 --
 ALTER TABLE `impl_role_permissions`
-  MODIFY `kd_impl_role_permission` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `kd_impl_role_permission` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`
 --
 ALTER TABLE `oauth_clients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `oauth_personal_access_clients`
 --
 ALTER TABLE `oauth_personal_access_clients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `kd_permission` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `kd_permission` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -648,7 +659,7 @@ ALTER TABLE `sidebars`
 -- AUTO_INCREMENT for table `sub_sidebars`
 --
 ALTER TABLE `sub_sidebars`
-  MODIFY `kd_sub_sidebar` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `kd_sub_sidebar` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
