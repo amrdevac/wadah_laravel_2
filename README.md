@@ -1,8 +1,4 @@
-# Compay Gate Apps
-#### Sejak : 4 November 2021
-Sebuah Aplikasi yang dapat mengelola apliaksi yang tersedia pada suatu perusahaan ,
-
-### Implement With Wadah Laravel Versi 2.0
+# Wadah Laravel Versi 2.0 (Inprogress)
 
 #### 100% Implementasi sudah di terapkan dari versi sebelumnya
 
