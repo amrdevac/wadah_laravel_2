@@ -90,6 +90,12 @@ const routes = [
     },
 
     {
+        path: "/audit-trail",
+        component: () => import("../../vue/auth/auditTrail/index.vue"),
+        name: "audit-trail.index"
+    },
+
+    {
         path: "/*",
         component: () => import("../../vue/404.vue"),
         name: "notfound"
