@@ -49,8 +49,6 @@ class Controller extends BaseController
             abort(403, "Tikda Memiliki akses untuk mengubah data ini");
         }
     }
-
-
     
 
     public function get_primaryKey($kd)
@@ -72,12 +70,10 @@ class Controller extends BaseController
         return  '/img/' . $namaFolder . $namaFoto;
     }
 
-
     public function unlink($data)
     {
         return @unlink(public_path() . $data);
     }
-
 
     public function membuatFolder($namaFolder)
     {
