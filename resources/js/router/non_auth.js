@@ -1,7 +1,7 @@
 const routes = [
     {
         path: "/",
-        component: () => import("../../vue/home.vue"),
+        component: () => import("../../vue/homepage.vue"),
         name: "home"
     },
     {
@@ -10,11 +10,11 @@ const routes = [
         name: "login"
     },
 
-    {
-        path: "/registrasi",
-        component: () => import("../../vue/registrasi.vue"),
-        name: "registrasi"
-    },
+    // {
+    //     path: "/registrasi",
+    //     component: () => import("../../vue/registrasi.vue"),
+    //     name: "registrasi"
+    // },
 
     {
         path: "/img_compress",
