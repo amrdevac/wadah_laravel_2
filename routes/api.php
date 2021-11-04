@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuditTrailController;
 use App\Http\Controllers\API\AutentikasiController;
 use App\Http\Controllers\API\KelolaRolePermissionController;
 use App\Http\Controllers\API\KelolaUserController;
@@ -44,6 +45,10 @@ Route::middleware(['auth:api', "akses"])->group(function () {
         Route::post("{kd_role}", [KelolaRolePermissionController::class, "store"])->name('store');
         Route::delete("{kd_impl_permission}", [KelolaRolePermissionController::class, "destroy"])->name('destroy');
     });
+
+    Route::apiResources(['audit-trail' => AuditTrailController::class], [
+        'only' => ["index",  "show"]
+    ]);
 });
 
 
