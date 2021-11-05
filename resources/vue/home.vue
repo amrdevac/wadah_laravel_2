@@ -87,7 +87,7 @@ export default {
       return {
          in_data: {},
          value: null,
-         value_input:'',
+         value_input: "",
          options: ["list", "of", "options"]
       };
    },
@@ -97,9 +97,7 @@ export default {
          count: state => state.count
       })
    },
-   mounted() {
-      this.load();
-   },
+   mounted() {},
    methods: {
       konfirmasi_hapus() {
          konfirmasiHapus.fire().then(result => {

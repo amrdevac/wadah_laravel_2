@@ -105,7 +105,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       in_data: {},
       value: null,
-      value_input: '',
+      value_input: "",
       options: ["list", "of", "options"]
     };
   },
@@ -115,9 +115,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return state.count;
     }
   })),
-  mounted: function mounted() {
-    this.load();
-  },
+  mounted: function mounted() {},
   methods: {
     konfirmasi_hapus: function konfirmasi_hapus() {
       var _this = this;

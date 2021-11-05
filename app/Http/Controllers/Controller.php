@@ -10,6 +10,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Image;
 
 class Controller extends BaseController
 {
@@ -51,8 +52,6 @@ class Controller extends BaseController
     }
 
 
-    
-
     public function get_primaryKey($kd)
     {
         return $kd . substr(rand() * time(), 0, 6);
@@ -72,12 +71,10 @@ class Controller extends BaseController
         return  '/img/' . $namaFolder . $namaFoto;
     }
 
-
     public function unlink($data)
     {
         return @unlink(public_path() . $data);
     }
-
 
     public function membuatFolder($namaFolder)
     {

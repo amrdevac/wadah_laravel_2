@@ -9,6 +9,7 @@ use App\Http\Controllers\API\RoleController;
 use App\Http\Controllers\API\SidebarController;
 use App\Http\Controllers\API\SubSidebarController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\AplikasiController;
 
 
 Route::post("/login-app", [AutentikasiController::class, "loginDefault"])->name("app.login");
@@ -49,17 +50,12 @@ Route::middleware(['auth:api', "akses"])->group(function () {
     Route::apiResources(['audit-trail' => AuditTrailController::class], [
         'only' => ["index",  "show"]
     ]);
+
+    Route::resource('aplikasi', AplikasiController::class);
 });
 
 
 // JANGAN LUPA amr:getAllRoutes setiap nambahin route
 // JANGAN LUPA KASIH ROUTE NAME AS JIKA ROUTE BUKAN RESOURCE
 // NAMA ROUTE YANG HANYA AKAN DI TAMPILKAN PADA MANAJEMEN SIDEBAR HANYA YANG 
-    //   INDEX DAN CREATE MAKA HATI HATI DALAM MEMBUAT ROUTE  
-
-
-
-    // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    //     dd(123);
-    //     return $request->user();
-    // });
+//   INDEX DAN CREATE MAKA HATI HATI DALAM MEMBUAT ROUTE  
