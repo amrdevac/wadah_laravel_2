@@ -10,6 +10,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Image;
 
 class Controller extends BaseController
 {
@@ -49,7 +50,7 @@ class Controller extends BaseController
             abort(403, "Tikda Memiliki akses untuk mengubah data ini");
         }
     }
-    
+
 
     public function get_primaryKey($kd)
     {
